@@ -8,6 +8,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppService } from './app.service';
 
 
 @NgModule({
@@ -20,12 +22,16 @@ import { appRoutes } from './app.routes';
     CarouselModule,
     NgMaterialModule,
     PagesModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
   ],
-  providers: [],
+  providers: [
+    AppService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

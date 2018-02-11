@@ -32,6 +32,8 @@ import {
   MatToolbarModule,
   MatTooltipModule,
   MatStepperModule,
+  MatFormFieldModule,
+  MatFormField,
 } from '@angular/material';
 
 @NgModule({
@@ -68,6 +70,7 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    MatFormFieldModule,
   ],
   exports: [
     MatAutocompleteModule,
@@ -101,7 +104,13 @@ import {
     MatToolbarModule,
     MatTooltipModule,
     MatStepperModule,
+    MatFormFieldModule,
   ],
-  declarations: []
+  // providers: [
+  //   {provide: MAT_LABEL_GLOBAL_OPTIONS, useValue: {float: 'always'}}
+  // ],
+  declarations: [
+    // MatFormField,
+  ]
 })
 export class NgMaterialModule { }
