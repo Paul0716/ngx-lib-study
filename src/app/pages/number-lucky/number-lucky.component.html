@@ -9,19 +9,32 @@
         <span
           matPrefix>09 &nbsp;</span>
         <input
-          type="text"
+          type="tel"
           matInput
+          maxlength="8"
           (focus)="inputFocus('mobile')"
           (change)="listAllPairsStatus()"
           formControlName="mobile"
           placeholder="電話號碼">
       </mat-form-field>
+      <button mat-raised-button
+          color="primary"
+          (click)="reset()">清除</button>
+
     </form>
 
     <!-- 改運運勢結果 -->
-    <mat-chip-list>
+    <mat-chip-list *ngIf="matchList.length > 0">
       <mat-chip
         *ngFor="let item of matchList;let i = index;"
+        [color]="item.color"
+        [selected]="item.color"
+        >{{ item.number }} - {{ item.label }}</mat-chip>
+    </mat-chip-list>
+
+    <mat-chip-list *ngIf="bestMatchList.length > 0">
+      <mat-chip
+        *ngFor="let item of bestMatchList;let i = index;"
         [color]="item.color"
         [selected]="item.color"
         >{{ item.number }} - {{ item.label }}</mat-chip>

@@ -13,14 +13,15 @@ import { pairsStatus } from './enum/numberStatus';
 export class NumberLuckyComponent implements OnInit {
 
   checkForm: FormGroup;
-  matchList: Pairs[];
+  matchList: Pairs[] = [];
+  bestMatchList: Pairs[] = [];
 
   constructor(private fb: FormBuilder, private appSvc: AppService) { }
 
   ngOnInit() {
 
     this.checkForm = this.fb.group({
-      mobile: ['', [Validators.required] ]
+      mobile: ['', [Validators.required, Validators.maxLength(8)] ]
     });
   }
 
@@ -40,8 +41,11 @@ export class NumberLuckyComponent implements OnInit {
    * @memberof NumberLuckyComponent
    */
   listAllPairsStatus() {
+    // 處理二位數
     const testMobile = '09' + this.checkForm.get('mobile').value;
-    const pairs = testMobile.split('').map( (o, i) => testMobile.substring(i, i + 2) );
+    const pairs = testMobile.split('')
+      .map( (o, i) => testMobile.substring(i, i + 2) )
+      .filter( o => o.length === 2);
     let result = [];
     for (const pair of pairs) {
       result = result.concat(data.filter( o => o.number === pair && pair.length === 2));
@@ -60,6 +64,17 @@ export class NumberLuckyComponent implements OnInit {
       return o;
     });
     this.matchList = result;
+    // 處理三位數
+  }
+
+  /**
+   * 清除輸入結果
+   *
+   * @memberof NumberLuckyComponent
+   */
+  reset() {
+    this.checkForm.reset({ mobile: '' });
+    this.matchList = [];
   }
 
 }
