@@ -10,7 +10,8 @@ const wordings = {
   sixBad: '六煞',
   extYear: '延年',
   fiveGhost: '五鬼',
-  accident: '禍害'
+  accident: '禍害',
+  lte: '生天延'
 };
 
 export const data: Pairs[] = [
@@ -332,13 +333,8 @@ export const data: Pairs[] = [
   },
   {
     number: '62',
-    status: pairsStatus.Normal,
-    label: wordings.empty
-  },
-  {
-    number: '62',
-    status: pairsStatus.Normal,
-    label: wordings.empty
+    status: pairsStatus.Good,
+    label: wordings.extYear
   },
   {
     number: '63',
@@ -524,5 +520,48 @@ export const data: Pairs[] = [
     number: '99',
     status: pairsStatus.Normal,
     label: wordings.pos
+  },
+];
+
+export const nicePairs: Pairs[] = [
+  {
+    number: '1491',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '2862',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '3943',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '6726',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '4134',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '8278',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '9319',
+    status: pairsStatus.Good,
+    label: wordings.lte
+  },
+  {
+    number: '7687',
+    status: pairsStatus.Good,
+    label: wordings.lte
   },
 ];

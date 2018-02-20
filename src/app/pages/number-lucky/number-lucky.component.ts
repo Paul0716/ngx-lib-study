@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { AppService } from '../../app.service';
-import { data } from './data';
+import { data, nicePairs } from './data';
 import { Pairs } from './interfaces/numberPairs';
 import { pairsStatus } from './enum/numberStatus';
 
@@ -64,7 +64,27 @@ export class NumberLuckyComponent implements OnInit {
       return o;
     });
     this.matchList = result;
-    // 處理三位數
+    // 處理四位數
+    const fourPairs = testMobile.split('')
+      .map( (o, i) => testMobile.substring(i, i + 4) )
+      .filter( o => o.length === 4);
+    for (const pair of fourPairs) {
+      result = result.concat(nicePairs.filter( o => o.number === pair && pair.length === 4));
+    }
+    result.map( o => {
+      switch (o.status) {
+        case pairsStatus.Good:
+          o.color = 'primary';
+          break;
+        case pairsStatus.Bad:
+          o.color = 'warn';
+          break;
+        default:
+          break;
+      }
+      return o;
+    });
+    this.matchList = result;
   }
 
   /**
