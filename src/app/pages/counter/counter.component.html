@@ -1,0 +1,25 @@
+<mat-card>
+  <mat-card-title>
+    計數器
+  </mat-card-title>
+  <mat-card-content>
+    <h3>目前計數: {{ (counter$ | async).count }}</h3>
+  </mat-card-content>
+  <mat-card-footer class="coutner-card-footer">
+    <button mat-raised-button color="primary" (click)="increment(1)">
+      +1
+    </button>
+    <button mat-raised-button color="primary" (click)="decrement(1)">
+      -1
+    </button>
+    <button mat-raised-button color="primary" (click)="increment(5)">
+      +5
+    </button>
+    <button mat-raised-button color="primary" (click)="decrement(5)">
+      -5
+    </button>
+    <button mat-raised-button color="primary" (click)="reset()">
+      Reset
+    </button>
+  </mat-card-footer>
+</mat-card>

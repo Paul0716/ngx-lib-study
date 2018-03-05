@@ -7,6 +7,7 @@ import { NumberLuckyService } from './number-lucky/number-lucky.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { appRoutes } from '../app.routes';
+import { CounterComponent } from './counter/counter.component';
 import { ReduxComponent } from './redux/redux.component';
 
 @NgModule({
@@ -23,15 +24,17 @@ import { ReduxComponent } from './redux/redux.component';
   declarations: [
     HomeComponent,
     NumberLuckyComponent,
-    ReduxComponent
+    CounterComponent,
+    ReduxComponent,
   ],
   providers: [
     NumberLuckyService
   ],
   exports: [
     HomeComponent,
-    ReduxComponent,
-    NumberLuckyComponent
+    NumberLuckyComponent,
+    CounterComponent,
+    ReduxComponent
   ]
 })
 export class PagesModule { }

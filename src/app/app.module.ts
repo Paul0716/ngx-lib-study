@@ -11,8 +11,10 @@ import { appRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { AppService } from './app.service';
-import { counterReducer } from './store/counter/counter.reducer';
-
+import { reducers, metaReducers } from './reducers';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -28,9 +30,10 @@ import { counterReducer } from './store/counter/counter.reducer';
     ReactiveFormsModule,
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+      { enableTracing: !environment.production } // <-- debugging purposes only
     ),
-    StoreModule.forRoot({ count: counterReducer })
+    StoreModule.forRoot(reducers, { metaReducers }),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
   providers: [
     AppService

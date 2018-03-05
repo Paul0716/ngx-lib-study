@@ -11,26 +11,10 @@ import { CounterState } from '../../store/counter/counter.store';
   styleUrls: ['./redux.component.css']
 })
 export class ReduxComponent implements OnInit {
-  counter$: Observable<CounterState>;
 
-  constructor(private store: Store<CounterState>) {
-    this.counter$ = store.pipe(select('count'));
-  }
+  constructor() {}
 
 
   ngOnInit() {
   }
-
-  increment(n: number): void {
-    this.store.dispatch({ type: INCREMENT, payload:  n });
-  }
-
-  decrement(n: number): void {
-    this.store.dispatch({ type: DECREMENT, payload: n });
-  }
-
-  reset() {
-    this.store.dispatch({ type: RESET });
-  }
-
 }
