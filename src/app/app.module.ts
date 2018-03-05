@@ -9,7 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { appRoutes } from './app.routes';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 import { AppService } from './app.service';
+import { counterReducer } from './store/counter/counter.reducer';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { AppService } from './app.service';
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
     ),
+    StoreModule.forRoot({ count: counterReducer })
   ],
   providers: [
     AppService
