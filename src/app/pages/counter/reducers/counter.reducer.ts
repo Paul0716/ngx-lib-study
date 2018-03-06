@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { CounterActionTypes, Decrement } from '../actions/counter.actions';
+import { CounterActionTypes } from '../actions/counter.actions';
 
 export interface State {
   count: number;
@@ -17,9 +17,6 @@ export interface CounterAction extends Action {
 
 
 export function reducer(state: State = initialState, action: CounterAction): State {
-
-  console.log('counter reducer');
-
   switch (action.type) {
     case CounterActionTypes.Increment:
       return {
